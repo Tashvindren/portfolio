@@ -1,11 +1,7 @@
 'use strict';
 
-
-
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
-
-
 
 // sidebar variables
 const sidebar = document.querySelector("[data-sidebar]");
@@ -13,8 +9,6 @@ const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
 // sidebar toggle functionality for mobile
 sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
-
-
 
 // testimonials variables
 const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
@@ -52,8 +46,6 @@ for (let i = 0; i < testimonialsItem.length; i++) {
 // add click event to modal close button
 modalCloseBtn.addEventListener("click", testimonialsModalFunc);
 overlay.addEventListener("click", testimonialsModalFunc);
-
-
 
 // custom select variables
 const select = document.querySelector("[data-select]");
@@ -113,8 +105,6 @@ for (let i = 0; i < filterBtn.length; i++) {
 
 }
 
-
-
 // contact form variables
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
@@ -133,8 +123,6 @@ for (let i = 0; i < formInputs.length; i++) {
 
   });
 }
-
-
 
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
@@ -156,4 +144,75 @@ for (let i = 0; i < navigationLinks.length; i++) {
     }
 
   });
+
+// Function to handle showing the modal
+const eyeIcons = document.querySelectorAll('[data-modal-id]');
+
+eyeIcons.forEach((icon) => {
+  const modalId = icon.getAttribute('data-modal-id');
+  const modal = document.getElementById(modalId);
+  const closeBtn = modal.querySelector('.popup-close');
+  
+  // Show the modal when the eye icon is clicked
+  icon.onclick = function() {
+    modal.style.display = "block";
+  };
+
+  // Close the modal when the close button is clicked
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  };
+
+  // Close modal if clicked outside of content area
+  modal.onclick = function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+});
+
+// Download buttons functionality
+const downloadButton1 = document.getElementById('download-1');
+const downloadButton2 = document.getElementById('download-2');
+
+// File paths (Adjust to your actual file paths in the assets folder)
+const file1Path = './assets/download/Poster-KidsTravel+.pdf'; // Example PDF file
+const file2Path = './assets/download/sample.apk'; // Example APK file
+
+// Download buttons functionality
+const downloadButton3 = document.getElementById('download-3');
+const downloadButton4 = document.getElementById('download-4');
+
+// File paths (Adjust to your actual file paths in the assets folder)
+const file3Path = './assets/download/sample.pdf'; // Example PDF file
+const file4Path = './assets/download/StickyNotes.apk'; // Example APK file
+
+// Set up download links
+downloadButton1.onclick = function() {
+  const link1 = document.createElement('a');
+  link1.href = file1Path;
+  link1.download = 'sample.pdf';  // Name the downloaded file
+  link1.click();
+};
+
+downloadButton2.onclick = function() {
+  const link2 = document.createElement('a');
+  link2.href = file2Path;
+  link2.download = 'sample.apk';  // Name the downloaded file
+  link2.click();
+};
+// Set up download links
+downloadButton3.onclick = function() {
+  const link1 = document.createElement('a');
+  link1.href = file3Path;
+  link1.download = 'sample.pdf';  // Name the downloaded file
+  link1.click();
+};
+
+downloadButton4.onclick = function() {
+  const link2 = document.createElement('a');
+  link2.href = file4Path;
+  link2.download = 'sample.apk';  // Name the downloaded file
+  link2.click();
+};
 }

@@ -2,15 +2,6 @@
   #style.css
 \*-----------------------------------*/
 
-
-/**
- * copyright 2022 @codewithsadee
- */
-
-
-
-
-
 /*-----------------------------------*\
   #CUSTOM PROPERTY
 \*-----------------------------------*/
@@ -21,53 +12,29 @@
    * colors
    */
 
-  /* gradient */
+/* Set 4: Midnight Mirage */
+/* Gradients: */ 
 
-  --bg-gradient-onyx: linear-gradient(
-    to bottom right, 
-    hsl(240, 1%, 25%) 3%, 
-    hsl(0, 0%, 19%) 97%
-  );
-  --bg-gradient-jet: linear-gradient(
-    to bottom right, 
-    hsla(240, 1%, 18%, 0.251) 0%, 
-    hsla(240, 2%, 11%, 0) 100%
-  ), hsl(240, 2%, 13%);
-  --bg-gradient-yellow-1: linear-gradient(
-    to bottom right, 
-    hsl(45, 100%, 71%) 0%, 
-    hsla(36, 100%, 69%, 0) 50%
-  );
-  --bg-gradient-yellow-2: linear-gradient(
-    135deg, 
-    hsla(45, 100%, 71%, 0.251) 0%, 
-    hsla(35, 100%, 68%, 0) 59.86%
-  ), hsl(240, 2%, 13%);
-  --border-gradient-onyx: linear-gradient(
-    to bottom right, 
-    hsl(0, 0%, 25%) 0%, 
-    hsla(0, 0%, 25%, 0) 50%
-  );
-  --text-gradient-yellow: linear-gradient(
-    to right, 
-    hsl(45, 100%, 72%), 
-    hsl(35, 100%, 68%)
-  );
+--bg-gradient-onyx: linear-gradient(to bottom right, hsl(265, 28%, 24%) 3%, hsl(46, 100%, 70%) 97%);
+--bg-gradient-jet: linear-gradient(to bottom right, hsla(270, 45%, 50%, 0.25) 0%, hsla(270, 22%, 32%, 0) 100%), hsl(270, 22%, 32%);
+--text-gradient-yellow: linear-gradient(to right, hsl(48, 100%, 66%), hsl(46, 90%, 58%));
+--bg-gradient-yellow-1: linear-gradient(to bottom right, hsl(48, 100%, 66%) 0%, hsla(46, 90%, 58%, 0) 50%);
+--bg-gradient-yellow-2: linear-gradient(135deg, hsla(48, 100%, 66%, 0.25) 0%, hsla(46, 90%, 58%, 0) 59.86%), hsl(270, 22%, 32%);
 
-  /* solid */
+/* Solid Colors: */
 
-  --jet: hsl(0, 0%, 22%);
-  --onyx: hsl(240, 1%, 17%);
-  --eerie-black-1: hsl(240, 2%, 13%);
-  --eerie-black-2: hsl(240, 2%, 12%);
-  --smoky-black: hsl(0, 0%, 7%);
-  --white-1: hsl(0, 0%, 100%);
-  --white-2: hsl(0, 0%, 98%);
-  --orange-yellow-crayola: hsl(45, 100%, 72%);
-  --vegas-gold: hsl(45, 54%, 58%);
-  --light-gray: hsl(0, 0%, 84%);
-  --light-gray-70: hsla(0, 0%, 84%, 0.7);
-  --bittersweet-shimmer: hsl(0, 43%, 51%);
+--jet: hsl(275, 35%, 18%);
+--onyx: hsl(265, 28%, 24%);
+--eerie-black-1: hsl(270, 22%, 32%);
+--eerie-black-2: hsl(272, 18%, 41%);
+--smoky-black: hsl(265, 45%, 6%);
+--white-1: hsl(255, 25%, 98%);
+--white-2: hsl(255, 25%, 95%);
+--orange-yellow-crayola: hsl(46, 100%, 70%);
+--vegas-gold: hsl(48, 60%, 58%);
+--light-gray: hsl(260, 15%, 85%);
+--light-gray-70: hsla(260, 15%, 85%, 0.7);
+--bittersweet-shimmer: hsl(330, 50%, 48%);
 
   /**
    * typography
@@ -96,7 +63,7 @@
    * shadow
    */
   
-  --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
+  --shadow-1: -4px 8px 24px hsla(0, 0%, 96%, 0.25);
   --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);
   --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.25);
   --shadow-4: 0 25px 50px hsla(0, 0%, 0%, 0.15);
@@ -110,10 +77,6 @@
   --transition-2: 0.5s ease-in-out;
 
 }
-
-
-
-
 
 /*-----------------------------------*\
   #RESET
@@ -155,10 +118,7 @@ input, textarea {
 
 html { font-family: var(--ff-poppins); }
 
-body { background: var(--smoky-black); }
-
-
-
+body { background: var(--bg-gradient-onyx); }
 
 
 /*-----------------------------------*\
@@ -315,6 +275,7 @@ main {
 \*-----------------------------------*/
 
 .sidebar {
+  position:sticky;
   margin-bottom: 15px;
   max-height: 112px;
   overflow: hidden;
@@ -1026,8 +987,92 @@ main {
   font-weight: var(--fw-300);
 }
 
+/* General styles for the modal */
+.popup-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+  padding-top: 60px;
+}
 
+.popup-content {
+  background: var(--bg-gradient-onyx);
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  color: var(--white-1);
+  font-family: Arial, sans-serif;
+  position: relative;
+}
 
+/* Close button inside modal */
+.popup-close {
+  color: var(--white-2);
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  cursor: pointer;
+}
+
+.popup-close:hover,
+.popup-close:focus {
+  color: var(--vegas-gold);
+  text-decoration: none;
+}
+
+/* Popup Title and other elements */
+.popup-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.popup-summary p,
+.popup-details p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Download Buttons */
+.popup-download {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.download-btn {
+  background: var(--jet); /* Brighter yellow color */
+  color: var(--white-1);
+  font-size: 16px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.download-btn:hover {
+  background: var(--bittersweet-shimmer); /* Golden color on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+.download-btn:active {
+  transform: scale(1); /* Reset scale on button click */
+}
 
 
 /*-----------------------------------*\
@@ -1770,7 +1815,7 @@ textarea.form-input::-webkit-resizer { display: none; }
    * RESET
    */
 
-  body::-webkit-scrollbar { width: 20px; }
+  /* body::-webkit-scrollbar { width: 20px; }
 
   body::-webkit-scrollbar-track { background: var(--smoky-black); }
 
@@ -1785,7 +1830,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   body::-webkit-scrollbar-thumb:hover { background: hsla(0, 0%, 100%, 0.15); }
 
   body::-webkit-scrollbar-button { height: 60px; }
-
+ */
 
 
   /**
